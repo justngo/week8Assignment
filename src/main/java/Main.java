@@ -1,50 +1,44 @@
 import java.util.Scanner;
-import java.util.Random;
 
 public class Main {
   public static void main(String[] args) {
     Scanner input = new Scanner(System.in);
-    Random rand = new Random();
+    methods m = new methods();
+    char grade;
+    String feedback;
+    int average;
 
-    System.out.println("Enter your name: ");
+    System.out.print("Enter student's name: ");
     String name = input.nextLine();
-    System.out.println("Enter your Student ID: ");
+    System.out.print("Enter student ID: ");
     int StudentID = input.nextInt();
     input.nextLine();
-    
-    System.out.println("Enter the marks for your first subject: ");
-    int marks1 = input.nextInt();
+
+    System.out.print("Enter marks for Math: ");
+    int marksMath = input.nextInt();
     input.nextLine();
-    System.out.println("Enter the marks for your second subject: ");
-    int marks2 = input.nextInt();
+    System.out.print("Enter marks for Computer Science: ");
+    int marksCS = input.nextInt();
     input.nextLine();
-    System.out.println("Enter the marks for your third subject: ");
-    int marks3 = input.nextInt();
+    System.out.print("Enter marks for English: ");
+    int marksEng = input.nextInt();
     input.nextLine();
 
-    int bonusMark1 = rand.nextInt(6);
-    int bonusMark2 = rand.nextInt(6);
-    int bonusMark3 = rand.nextInt(6);
+    System.out.println("\nCalculating final marks...\n");
 
-    if(marks1 + bonusMark1 > 100) {
-      marks1 = 100;
-    } else {
-      marks1 = marks1 + bonusMark1;
-    }
+    m.setStudentInfo(name, StudentID, marksMath, marksEng, marksCS);
+    m.applyBonusMarks();
+    m.calculateGrade();
 
-    if(marks2 + bonusMark2 > 100) {
-      marks2 = 100;
-    } else {
-      marks2 = marks2 + bonusMark2;
-    }
+    grade = m.getGrade();
+    feedback = m.provideFeedback();
+    average = m.getAvg();
 
-    if(marks3 + bonusMark3 > 100) {
-      marks3 = 100;
-    } else {
-      marks3 = marks3 + bonusMark1;
-    }
+    System.out.println("\nAverage Marks: " + average);
+    System.out.println("Final Grade: " + grade);
+    System.out.println("Feedback: " + feedback);
 
-    int average = 
+    input.close();
+
   }
-
 }
